@@ -1,0 +1,9 @@
+.row{width:100%;text-align: left;margin:0 auto;}
+.txt_content{color:#363636;font-size:16px; line-height:24px; }
+h1.txt_content_h1{font-size:18px; line-height:30px;margin:30px 0px 0px 0px;padding:0;height:30px;color:#363636;}
+.txt_content_blue{color:#008AB0;font-weight:bold;padding-left:5px; padding-right:5px;}
+.txt_content p{text-indent:2em;margin:20px 0px 0px 0px;}
+.txt_content_list{margin:0;padding:0px 0px 0px 2em; list-style:none;}
+.txt_content_list li{ height:28px;line-height:28px;overflow:hidden;}
+.txt_content_list li span{ float:right;}
+.txt_content_list li span i{color:#008AB0;font-weight:bold;padding-left:5px; padding-right:5px; font-style:normal;}

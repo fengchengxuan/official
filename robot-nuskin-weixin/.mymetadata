@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-module
+  type="WEB"
+  name="robot-nuskin-weixin"
+  id="myeclipse.1318478244593"
+  context-root="/dev"
+  j2ee-spec="1.4"
+  archive="robot-nuskin-weixin.war">
+  <attributes>
+    <attribute name="webrootdir" value="src/main/webapp" />
+  </attributes>
+</project-module>
+

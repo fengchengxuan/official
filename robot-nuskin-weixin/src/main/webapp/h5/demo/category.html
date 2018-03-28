@@ -1,0 +1,189 @@
+<html class="ng-scope" ng-app="mCommerce" lang="zh">
+<head>
+<style type="text/css">@charset "UTF-8";[ng\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak,.ng-hide{display:none !important;}ng\:form{display:block;}.ng-animate-block-transitions{transition:0s all!important;-webkit-transition:0s all!important;}.ng-hide-add-active,.ng-hide-remove{display:block!important;}
+</style>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+   
+<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <title>网上购物</title>
+
+    ﻿
+<link href="../css/bootstrap.min1.css" rel="stylesheet">
+<link href="../css/top.css" rel="stylesheet">
+<style>
+        h6
+        {
+            height: 25px;
+        }
+
+        .popover-content
+        {
+            padding: 4px;
+            color: white;
+            opacity: 1;
+        }
+
+        .popover.top > .arrow:after
+        {
+            bottom: 1px;
+            margin-left: -10px;
+            content: " ";
+             border-top-color:#76AEC4; 
+             /*#76AEC4; */
+             opacity: 0.7;
+            border-bottom-width: 0;
+        }
+
+        .arrow
+        {
+            /*  background-color:#007F99;*/
+        }
+       
+        .popover
+        {
+          
+             background-image:url('../images/test.png');
+             background-color:transparent;
+           /* -moz-opacity: 0.8;
+            opacity: 0.8;*/
+        }
+        .description p{text-indent:26px;margin-bottom:0px;}
+    </style>
+    <script src="../js/jquery.js"></script>
+</head>
+<body>﻿
+<div class="row ng-scope" style="margin-left: 0px; margin-right: 0px;" id="header">
+    <div style="text-align: center;">
+        <div>
+            <img src="../images/logoTop.png" class="img-responsive">
+        </div>
+    </div>
+</div>
+<div class="container big ng-scope" style="padding-bottom: 60px;">
+ 
+
+    <!-- begin:best-seller -->
+	<div class="row" ng-show="showProList">
+        <div class="col-md-12">
+            <div class="page-header">
+                <h3 style="color: #007F99; margin-bottom: -5px;">ageLOC™修身美颜</h3>
+                <div style="clear: both;"></div>
+            </div>
+        </div>
+    </div>
+    <div>
+    	<div>
+    		<img src="../images/ageLOC_meiyan.jpg" style="max-width: 100%;"/>
+    	</div>
+		<div class="description" style="margin-top:10px;text-indent:26px;">
+	    	<p>运用先进的专利科技设计而成可自信调节微电流，并可随时更换适用于脸部、头皮、身体等部位的按摩组件；
+	    	可搭配特别的保养品，让您在家中体验Spa的多重功效，轻松享受脸部活力保养、雕塑美好身段的过程。</p>
+	    	<p>运用先进的专利科技设计而成可自信调节微电流，并可随时更换适用于脸部、头皮、身体等部位的按摩组件；
+	    	可搭配特别的保养品，让您在家中体验Spa的多重功效，轻松享受脸部活力保养、雕塑美好身段的过程。</p>
+	    </div>
+	</div>
+	
+    <div class="row" ng-show="showProList">
+        <div class="col-md-12">
+            <div class="page-header">
+                <h3 style="color: #007F99; margin-bottom: -5px;">分类产品</h3>
+                <div style="clear: both;"></div>
+            </div>
+        </div>
+    </div>
+    <div class="row" ng-show="error.showList">
+        <!-- ngRepeat: product in products --><div class="col-md-3 col-sm-3 col-xs-6 ng-scope" name="productsquare" ng-repeat="product in products">
+            <div class="thumbnail product-item">
+                <a href="#/product/29003866">
+                    <img src="../nuskin_product_images/29003866l.jpg" alt="重点修护导头" class="img-responsive" ng-src="nuskin_product_images/29003866l.jpg">
+                    <div class="caption" style="padding: 1px; margin-top: -5px;">
+                        <h6 class="proname ng-binding">重点修护导头</h6>
+                        <span class="proprice pricesingle"><del class="ng-binding">零售价：<span class="fa fa-rmb" style="font-size: 9px;"></span>200</del></span><br>
+                        <span class="vipprice pricevip ng-binding">星级顾客价格：<br>
+                            <span class="pricestyle ng-binding"><span class="fa fa-rmb" style="font-size: 14px;"></span>160</span></span>
+                    </div>
+                </a>
+            </div>
+        </div><!-- end ngRepeat: product in products --><div class="col-md-3 col-sm-3 col-xs-6 ng-scope" name="productsquare" ng-repeat="product in products">
+            <div class="thumbnail product-item">
+                <a href="#/product/29003879">
+                    <img src="../nuskin_product_images/29003879l.jpg" alt="美体导头" class="img-responsive" ng-src="nuskin_product_images/29003879l.jpg">
+                    <div class="caption" style="padding: 1px; margin-top: -5px;">
+                        <h6 class="proname ng-binding">美体导头</h6>
+                        <span class="proprice pricesingle"><del class="ng-binding">零售价：<span class="fa fa-rmb" style="font-size: 9px;"></span>163</del></span><br>
+                        <span class="vipprice pricevip ng-binding">星级顾客价格：<br>
+                            <span class="pricestyle ng-binding"><span class="fa fa-rmb" style="font-size: 14px;"></span>130</span></span>
+                    </div>
+                </a>
+            </div>
+        </div><!-- end ngRepeat: product in products --><div class="col-md-3 col-sm-3 col-xs-6 ng-scope" name="productsquare" ng-repeat="product in products">
+            <div class="thumbnail product-item">
+                <a href="#/product/29003876">
+                    <img src="../nuskin_product_images/29003876l.jpg" alt="ageLOC净化凝露/舒活凝露" class="img-responsive" ng-src="nuskin_product_images/29003876l.jpg">
+                    <div class="caption" style="padding: 1px; margin-top: -5px;">
+                        <h6 class="proname ng-binding">ageLOC净化凝露/舒活凝露</h6>
+                        <span class="proprice pricesingle"><del class="ng-binding">零售价：<span class="fa fa-rmb" style="font-size: 9px;"></span>350</del></span><br>
+                        <span class="vipprice pricevip ng-binding">星级顾客价格：<br>
+                            <span class="pricestyle ng-binding"><span class="fa fa-rmb" style="font-size: 14px;"></span>280</span></span>
+                    </div>
+                </a>
+            </div>
+        </div><!-- end ngRepeat: product in products --><div class="col-md-3 col-sm-3 col-xs-6 ng-scope" name="productsquare" ng-repeat="product in products">
+            <div class="thumbnail product-item">
+                <a href="#/product/29138692">
+                    <img src="../nuskin_product_images/29138692l.jpg" alt="ageLOC 修身美颜Spa脸部套装" class="img-responsive" ng-src="nuskin_product_images/29138692l.jpg">
+                    <div class="caption" style="padding: 1px; margin-top: -5px;">
+                        <h6 class="proname ng-binding">ageLOC 修身美颜Spa脸部套装</h6>
+                        <span class="proprice pricesingle"><del class="ng-binding">零售价：<span class="fa fa-rmb" style="font-size: 9px;"></span>5000</del></span><br>
+                        <span class="vipprice pricevip ng-binding">星级顾客价格：<br>
+                            <span class="pricestyle ng-binding"><span class="fa fa-rmb" style="font-size: 14px;"></span>4000</span></span>
+                    </div>
+                </a>
+            </div>
+        </div><!-- end ngRepeat: product in products --><div class="col-md-3 col-sm-3 col-xs-6 ng-scope" name="productsquare" ng-repeat="product in products">
+            <div class="thumbnail product-item">
+                <a href="#/product/29003896">
+                    <img src="../nuskin_product_images/29003896l.jpg" alt="ageLOC美颜导头" class="img-responsive" ng-src="nuskin_product_images/29003896l.jpg">
+                    <div class="caption" style="padding: 1px; margin-top: -5px;">
+                        <h6 class="proname ng-binding">ageLOC美颜导头</h6>
+                        <span class="proprice pricesingle"><del class="ng-binding">零售价：<span class="fa fa-rmb" style="font-size: 9px;"></span>275</del></span><br>
+                        <span class="vipprice pricevip ng-binding">星级顾客价格：<br>
+                            <span class="pricestyle ng-binding"><span class="fa fa-rmb" style="font-size: 14px;"></span>220</span></span>
+                    </div>
+                </a>
+            </div>
+        </div><!-- end ngRepeat: product in products --><div class="col-md-3 col-sm-3 col-xs-6 ng-scope" name="productsquare" ng-repeat="product in products">
+            <div class="thumbnail product-item">
+                <a href="#/product/29138777">
+                    <img src="../nuskin_product_images/29138777l.jpg" alt="ageLOC Spa家庭套装" class="img-responsive" ng-src="nuskin_product_images/29138777l.jpg">
+                    <div class="caption" style="padding: 1px; margin-top: -5px;">
+                        <h6 class="proname ng-binding">ageLOC Spa家庭套装</h6>
+                        <span class="proprice pricesingle"><del class="ng-binding">零售价：<span class="fa fa-rmb" style="font-size: 9px;"></span>10000</del></span><br>
+                        <span class="vipprice pricevip ng-binding">星级顾客价格：<br>
+                            <span class="pricestyle ng-binding"><span class="fa fa-rmb" style="font-size: 14px;"></span>8000</span></span>
+                    </div>
+                </a>
+            </div>
+        </div><!-- end ngRepeat: product in products --><div class="col-md-3 col-sm-3 col-xs-6 ng-scope" name="productsquare" ng-repeat="product in products">
+            <div class="thumbnail product-item">
+                <a href="#/product/29102704">
+                    <img src="../nuskin_product_images/29102704l.jpg" alt="活颜舒纹精华露" class="img-responsive" ng-src="nuskin_product_images/29102704l.jpg">
+                    <div class="caption" style="padding: 1px; margin-top: -5px;">
+                        <h6 class="proname ng-binding">活颜舒纹精华露</h6>
+                        <span class="proprice pricesingle"><del class="ng-binding">零售价：<span class="fa fa-rmb" style="font-size: 9px;"></span>400</del></span><br>
+                        <span class="vipprice pricevip ng-binding">星级顾客价格：<br>
+                            <span class="pricestyle ng-binding"><span class="fa fa-rmb" style="font-size: 14px;"></span>320</span></span>
+                    </div>
+                </a>
+            </div>
+        </div><!-- end ngRepeat: product in products -->
+    </div>
+    
+</div>
+<a id="returnTop" style="bottom: 50px; cursor: pointer; display: none;">回到顶部</a>
+
+<script src="../js/top.js"></script>
+</body>
+</html>

@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:jee="http://www.springframework.org/schema/jee"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:jaxws="http://cxf.apache.org/jaxws"
+	xmlns:http-conf="http://cxf.apache.org/transports/http/configuration"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+	http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd
+	http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
+	http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.0.xsd
+	http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.0.xsd
+	http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-2.0.xsd
+	http://cxf.apache.org/jaxws http://cxf.apache.org/schemas/jaxws.xsd
+	http://cxf.apache.org/transports/http/configuration http://cxf.apache.org/schemas/configuration/http-conf.xsd"
+	default-autowire="byName" default-destroy-method="destroy"
+	default-init-method="init">
+	
+	<import resource="classpath:META-INF/cxf/cxf.xml" />
+	<import resource="classpath:META-INF/cxf/cxf-servlet.xml" />
+	
+	<context:component-scan base-package="com.eastrobot.robotdev" annotation-config="true"/>
+	
+	<http-conf:conduit name="{http://www.eastrobot.cn/ws/RobotServiceWx}RobotServiceWx.http-conduit">
+        <http-conf:client ConnectionTimeout="3000" ReceiveTimeout="8000"/>
+    </http-conf:conduit>
+
+	<bean id="robotServiceWx"
+		class="com.eastrobot.robotdev.ws.impl.DefaultRobotServiceWx" />
+
+	<!-- 二次开发接口服务Service -->
+	<jaxws:endpoint address="/RobotServiceWx" implementor="#robotServiceWx"></jaxws:endpoint>
+	<!-- 只需要开放用到的webservice接口即可，注释掉非使用的接口 -->
+	<!-- 应答接口，以后都使用扩展的EX接口 -->
+	<!-- 如robot和dev在同一个容器下，使用 -->
+	<!-- author:allen 如使用中发现bug，大家商讨优化，进一步完善 -->
+
+	<!-- 智能问答接口  start -->
+	<!--<bean id="robotService"
+		class="com.eastrobot.robotdev.ws.impl.DefaultRobotService" />
+	<jaxws:endpoint address="/RobotService"
+		implementor="#robotService">
+	</jaxws:endpoint>
+	-->
+	<!-- 智能问答接口  end -->
+
+	<!-- 微信智能问答接口  start -->
+	<!--<bean id="robotServiceWx"
+		class="com.eastrobot.robotdev.ws.impl.DefaultRobotServiceWx" />
+	<jaxws:endpoint address="/RobotServiceWx"
+		implementor="#robotServiceWx">
+	</jaxws:endpoint>-->
+	<!-- 微信智能问答接口  end -->
+
+
+
+	<!-- 满意度调查接口  start 
+		<bean id="feedbackService"
+		class="com.eastrobot.robotdev.ws.impl.DefaultFeedbackService" />
+		<jaxws:endpoint address="/FeedbackService"
+		implementor="#feedbackService">
+		</jaxws:endpoint>
+		满意度调查接口  end -->
+
+
+
+	<!-- 热点问题，建议问，相关问接口  start 
+		<bean id="questionService"
+		class="com.eastrobot.robotdev.ws.impl.DefaultQuestionService" />
+		<jaxws:endpoint address="/QuestionService"
+		implementor="#questionService">
+		</jaxws:endpoint>
+		热点问题，建议问，相关问接口  end -->
+
+
+
+	<!-- 解决、未解决接口  start 
+		<bean id="faqVoteService"
+		class="com.eastrobot.robotdev.ws.impl.DefaultFaqVoteService" />
+		<jaxws:endpoint address="/FaqVoteService"
+		implementor="#faqVoteService">
+		</jaxws:endpoint>
+		解决、未解决接口  start -->
+
+	<!-- 机器人属性接口  start -->
+		<!--<bean id="profileService"
+		class="com.eastrobot.robotdev.ws.impl.DefaultProfileService" />
+		<jaxws:endpoint address="/ProfileService"
+		implementor="#profileService">
+		</jaxws:endpoint>
+	--><!--	机器人属性接口  end -->
+
+
+	<bean id="propertyConfigurer"
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="locations">
+			<list>
+				<value>classpath:app.properties</value>
+				<value>classpath:app-*.properties</value>
+			</list>
+		</property>
+		<property name="ignoreResourceNotFound" value="true"></property>
+		<property name="systemPropertiesMode" value="0" />
+	</bean>
+
+	<!-- 产品查询服务 -->
+	<bean id="productService" class="com.eastrobot.robotdev.service.ProductService">
+		<property name="soa_request_host" value="${soa.request.host}"></property>
+		<property name="category_url" value="${category.url}"></property>
+		<property name="product_url" value="${product.url}"></property>
+		<property name="product_search_url" value="${product.search.url}"></property>
+	</bean>
+	<!-- 绩效评估 -->
+	<bean id="evaluationService" class="com.eastrobot.robotdev.service.EvaluationService">
+		<property name="soa_request_host" value="${soa.request.host}"></property>
+		<property name="addr_evalution_url" value="${addr.evalution.url}"></property>
+	</bean>
+	<!-- 积分兑换历史 -->
+	<bean id="prodCreditService" class="com.eastrobot.robotdev.service.ProdCreditService">
+		<property name="soa_request_host" value="${soa.request.host}"></property>
+		<property name="addr_points4history_url" value="${addr.points4history.url}"></property>
+		<property name="addr_orderentry_url" value="${addr.orderentry.url}"></property>
+	</bean>
+	
+	<!-- 负载 -->
+	<bean id="callService" class="com.eastrobot.robotdev.ws.impl.CallService">
+		<property name="robotServiceExMap">
+			<map>
+				<entry>
+					<key>
+						<value>0</value>
+					</key>
+					<ref bean="call.0"/>
+				</entry>
+				<entry>
+					<key>
+						<value>1</value>
+					</key>
+					<ref bean="call.1"/>
+				</entry>
+			</map>
+		</property>
+	</bean>
+	
+	<jaxws:client id="call.0"
+				  serviceClass="cn.eastrobot.robotdev.ws.client.RobotServiceWx"
+				  address="${call.0.addr}">
+	</jaxws:client>
+	
+	<jaxws:client id="call.1"
+				  serviceClass="cn.eastrobot.robotdev.ws.client.RobotServiceWx"
+				  address="${call.1.addr}">
+	</jaxws:client>
+	
+</beans>

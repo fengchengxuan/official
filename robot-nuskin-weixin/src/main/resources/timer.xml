@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:util="http://www.springframework.org/schema/util" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:http-conf="http://cxf.apache.org/transports/http/configuration"
+	xmlns:jaxws="http://cxf.apache.org/jaxws"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+	http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd
+	http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
+	http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.0.xsd
+	http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.0.xsd
+	http://cxf.apache.org/transports/http/configuration http://cxf.apache.org/schemas/configuration/http-conf.xsd
+	http://cxf.apache.org/jaxws http://cxf.apache.org/schemas/jaxws.xsd"
+	default-autowire="byName" default-destroy-method="destroy"
+	default-init-method="init">
+	
+	<!--  
+	<jaxws:client id="cessoManagerService"
+		serviceClass="com.ebiz.uniservice.ceair.passport.ICessoManagerService"
+		address="${login_service_wsdl}">
+	</jaxws:client>
+	-->
+	<!-- 定时上传图片 -->
+	<bean id="upLoadImageService" class="com.eastrobot.robotdev.nuskin.service.UpLoadImageService"></bean>
+ 
+	<bean id="jobDetail" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<property name="targetObject">
+			<ref bean="upLoadImageService" />
+		</property>
+		<property name="targetMethod">
+			<value>upload</value>
+		</property>
+	</bean>
+	
+	<bean id="cronTrigger_runAll" class="org.springframework.scheduling.quartz.CronTriggerBean">
+		<property name="jobDetail" ref="jobDetail" />
+		<property name="cronExpression">
+			<value>0 0 3 * * ?</value>
+		</property>
+	</bean>
+	<!-- end -->
+	<!-- 定时清理user.properties文件 -->
+	
+	<bean id="clearProperties" class="com.eastrobot.robotdev.nuskin.service.ClearUserProperties"></bean>
+ 
+	<bean id="clearDetail" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<property name="targetObject">
+			<ref bean="clearProperties" />
+		</property>
+		<property name="targetMethod">
+			<value>clear</value>
+		</property>
+	</bean>
+	
+	<bean id="clearUserProperties" class="org.springframework.scheduling.quartz.CronTriggerBean">
+		<property name="jobDetail" ref="clearDetail" />
+		<property name="cronExpression">
+			<value>59 59 23 * * ?</value><!-- 每天23点59分59秒开始清理 -->
+		</property>
+	</bean>
+ 
+	<!-- end -->
+ 
+	<bean class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+		<property name="triggers">
+			<list>
+				<ref local="cronTrigger_runAll" />
+				<ref local="clearUserProperties"/>
+			</list>
+		</property>
+	</bean>
+	<!-- 定时任务 end <property name="taskExecutor" ref="executor" /> -->
+	
+	
+</beans>

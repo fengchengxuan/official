@@ -1,0 +1,106 @@
+<html class="ng-scope" ng-app="mCommerce" lang="zh">
+    <head>
+    <style type="text/css">@charset "UTF-8";[ng\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak,.ng-hide{display:none !important;}ng\:form{display:block;}.ng-animate-block-transitions{transition:0s all!important;-webkit-transition:0s all!important;}.ng-hide-add-active,.ng-hide-remove{display:block!important;}
+    </style>    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+   
+<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <title>意见反馈</title>
+    ﻿
+	<link href="../css/bootstrap.min1.css" rel="stylesheet"/>
+
+
+    <link href="../css/top.css" rel="stylesheet">
+   
+    <!-- ngView:  --><div class="ng-scope" ng-view="">
+<style class="ng-scope">
+        .popover-content
+        {
+            padding: 4px;
+            color: white;
+            opacity: 1;
+        }
+
+        .popover.top > .arrow:after
+        {
+            bottom: 1px;
+            margin-left: -10px;
+            content: " ";
+            border-top-color: #76AEC4;
+            border-bottom-width: 0;
+        }
+
+        .arrow
+        {
+            /*  background-color:#007F99;*/
+        }
+       
+        .popover
+        {
+          
+             background-image:url('../images/test.png');
+             background-color:transparent;
+           /* -moz-opacity: 0.8;
+            opacity: 0.8;*/
+        }
+        
+        .col-xs-10 {
+    		width: 100%;
+		}
+		
+		#Div2{border:1px solid #E1E1E1;width:100%;text-align:center;}
+		#Div2 .title{width:100%;padding-left:5px;height:30px;color:#717073;background-color:#F2F2F2;text-align:left;font-size:14px;line-height:30px;}
+    	#textarea{width:100%;height:10%;}
+    </style>
+    <script src="../js/jquery.js"></script>
+    <!---->
+    
+    
+    </head>
+    <body>﻿
+     
+    
+<div class="row ng-scope" style="margin-left:0px;margin-right:0px;" id="header">
+    <div style="text-align: center;">
+        <div>
+            <img src="../images/logoTop.png" class="img-responsive">
+        </div>
+    </div>
+</div>
+
+<div id='Div2'>
+	<div class='title'>请告诉我们原因</div>
+	<div>
+		<textarea id="textarea" onKeyDown="textdown(event)" onKeyUp="textup()" onfocus="if(value=='请在这里输入，限制100字'){value=''}" onblur="if (value ==''){value='请在这里输入，限制100字'}"></textarea>
+		<button id='submit_btn'>提交</button>
+	</div>
+</div>
+<script type="text/javascript">
+function textdown(e) {
+    textevent = e;
+    if (textevent.keyCode == 8) {
+        return;
+    }
+    if (document.getElementById('textarea').value.length >= 100) {
+        if (!document.all) {
+            textevent.preventDefault();
+        } else {
+            textevent.returnValue = false;
+        }
+    }
+}
+function textup() {
+    var s = document.getElementById('textarea').value;
+    //判断ID为text的文本区域字数是否超过100个 
+    if (s.length > 100) {
+        document.getElementById('textarea').value = s.substring(0, 100);
+    }
+}
+</script>
+<a id="returnTop" style="bottom: 50px; cursor: pointer; display: none;">回到顶部</a>
+
+<script src="../js/top.js"></script>
+</body>
+</html>
